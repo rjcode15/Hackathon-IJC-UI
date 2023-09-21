@@ -1,0 +1,30 @@
+.login-form {
+    /* min-width: 400px; */
+    font-size: 50px!important;
+     border-radius: 4px;
+   
+   
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+  
+  .login-form .ant-form-item .ant-form-item-control-input-content
+  {
+     font-size: 16px;
+    height:40px;
+    color:red;
+    
+    }
+ 
+    .title1 .login-form .ant-form-item .ant-form-item-control-input-content
+    {
+      font-size: 25px;
+    }
+  .title .login-form .ant-form-item .ant-form-item-control-input-content
+  {
+    color:black
+  }
