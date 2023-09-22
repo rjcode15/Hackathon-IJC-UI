@@ -17,7 +17,7 @@ import PollingBooths from './elections/PollingBooths';
 import Vote from './elections/Vote';
 import Candidate from './elections/Candidate';
 import { useMediaQuery } from 'react-responsive';
-import {GoogleLogin} from '@react-oauth/google';
+
 import './App.css';
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -38,46 +38,20 @@ const headerStyle = {
 
 
 
-const App = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [userPoints, setUserPoints] = useState(0);
+const App = () => {  
   const [loggedIn, setLoggedIn] = useState(false);
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
   const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isLargeScreen = useMediaQuery({ minWidth: 1024 });
- 
-  const earnPoints = (pointsEarned) => {
-    const newPoints = userPoints + pointsEarned;
 
-    // Update user points through the API
-    updateUserPoints(newPoints).then((updatedPoints) => {
-      setUserPoints(updatedPoints);
-    });
-  };
-  useEffect(() => {
-    console.log(userName, password)
-  }, [userName, password, loggedIn])
-  const onRegisterationSuccess = (username, password) => {
-    setUserName(username);
-    setPassword(password);
-
-    console.log("name and password is in app", username, password)
-  }
   console.log("logedIn", loggedIn);
+  const loginSuccess = (loggedIn) => {
+    setLoggedIn(true);
+  }
   return (
    <>
     {!loggedIn ?<div><b>Hackathon Tech Fest  --  Welcome to PA Youth Vote</b>
-          <GoogleLogin onSuccess={ tokenResponse => {
-                                                      console.log('Login success');
-                                                      console.log(tokenResponse);
-                                                      console.log('Need to add backend code, toggle flip ');
-                                                      setLoggedIn(true);
-                                                    }}
-                                                    onError={() => {
-                                                      console.log('Login Failed');
-                                                    }}
-                                                  />
+          <Login loginSuccess = {loginSuccess} > </Login>
         </div>:
       <Router>
         <div className="App" style={{
