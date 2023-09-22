@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+.HeaderTitle {
+   width: 100%
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -48,27 +48,7 @@ const App = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
   const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isLargeScreen = useMediaQuery({ minWidth: 1024 });
-  // Function to simulate earning points
-  const renderContentBasedOnPath = () => {
-    const currentPath = window.location.pathname;
-
-    if (loggedIn) {
-      // Render content for not logged in users
-      if (currentPath === '/election-info') {
-        return <ElectionInfo />;
-      } else if (currentPath === '/polling-booths') {
-        return <PollingBooths />;
-      } else if (currentPath === '/contact-info') {
-      } else {
-        // Render content for other pages when not logged in
-        return (
-          <>
-            <UserTable />
-          </>
-        );
-      }
-    }
-  };
+ 
   console.log("logedIn", loggedIn)
   const earnPoints = (pointsEarned) => {
     const newPoints = userPoints + pointsEarned;
@@ -96,68 +76,9 @@ const App = () => {
 
         <Layout>
           <Header style={{backgroundColor: '#ffffff'}} >
-            {!loggedIn ?
-              <div style={{ width: "100%", backgroundColor: ' #7dbcea', fontSize: "25px", fontFamily: 'Raleway, sans-serif', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)', 
-              // textAlign: "center" 
-              }}><b>Hackathon Tech Fest</b>
-              </div>
-              : <Navbar loggedInUser={loggedInUser} />}
-
-            {!loggedIn && 
-              <Alert
-                banner
-                message={
-                  <Marquee pauseOnHover gradient={false}>
-                    <div style={{ width: "100%", color: "#1624FF" }}><b>SIGN UP NOW TO EARN 20 POINTS!!!</b></div>
-                  </Marquee>
-                }
-                type="info"
-              />}
-            {!loggedIn && <> <div style={{ textAlign: 'center',
-  color: '#108ee9',
-  // backgroundColor: '#108ee9',
-  fontWeight: '50',
-  fontSize: "25px",
-   marginTop: isSmallScreen?"" :"30px"}}><b> Welcome to PA Youth Vote</b></div></>
-            }
+            <Navbar/>
           </Header>
-          {!loggedIn ? <>
-            <Content style={{
-              textAlign: 'center',
-              minHeight: isSmallScreen?700:500,
-              lineHeight: '120px',
-              color: '#108ee9',
-              // backgroundColor: '#108ee9',
-              fontWeight: '50',
-              fontSize: "25px",
-              width: isSmallScreen?400 :900,
-              display: isSmallScreen?"block":"flex",
-              justifyContent: 'space-between',
-              marginTop: "20px"
-            }}>
-              <div style={{ flex: isSmallScreen ? 0 : "10" }}>
-                <div>{!isSmallScreen && <img style={{
-                  width: isSmallScreen ? "" : "800px",
-                  height: "500px", marginLeft: isSmallScreen ? "0px" : "20px"
-                }} src={"/image2.webp"} alt="My Image" />}</div>
-              </div>
-              {!register || (userName != "" && password != "") ?
-                <div style={{
-                  flex: isSmallScreen ? 0 : "7", height: "550px",
-                  marginLeft: isSmallScreen ? "20px" : "80px",
-                  justifyContent: isSmallScreen ? "flex-start" : "flex-end"
-                }}><Login register={setRegister} user={userName} pass={password} key={Math.random} loggedIn={setLoggedIn} earnPoints={earnPoints} loggedInUser={setLoggedInUser} /></div>
-                :
-                <div style={{flex: isSmallScreen ? "0" : "7", height: isSmallScreen ?"200px":"550px", marginLeft:isSmallScreen ? "20px" : "80px", justifyContent: isSmallScreen ? "flex-start" : "flex-end", marginBottom:"100px" }}><Register key="register" register={setRegister} onRegisterationSuccess={onRegisterationSuccess} earnPoints={earnPoints} /></div>
-              }
-            </Content></>
-            :
-
-            <div style={{
-              justifyContent: "center",
-              marginLeft: isSmallScreen ? '0px' : '30px',
-              marginTop: isSmallScreen ? '20px' : '50px',
-            }}>
+          <div  style ={{padding: "20px"}}></div>
               <Routes>
                 <Route path="/user-table" element={<UserTable />} />
                 <Route path="/election-info" element={<ElectionInfo />} />
@@ -165,12 +86,7 @@ const App = () => {
                 <Route exact path="/voter-information" element={<Vote />} />
                 <Route exact path="/candidate-information" element={<Candidate />} />
                 <Route path="/contact-info" element={<ContactInfo />} />
-                {/* <Route exact path="/"></Route> */}
               </Routes>
-            </div>}
-
-
-
         </Layout>
       </div>
     </Router>
