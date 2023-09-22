@@ -18,6 +18,7 @@ import PollingBooths from './elections/PollingBooths';
 import Vote from './elections/Vote';
 import Candidate from './elections/Candidate';
 import { useMediaQuery } from 'react-responsive';
+import {GoogleLogin} from '@react-oauth/google';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -80,6 +81,16 @@ const App = () => {
           </Header>
           <div  style ={{padding: "20px"}}></div>
               <Routes>
+              <Route path="/" element={<GoogleLogin 
+                                                  onSuccess={ tokenResponse => {
+                                                    console.log('Login success');
+                                                    console.log(tokenResponse);
+                                                    console.log('Need to add backend code, toggle flip ')
+                                                  }}
+                                                  onError={() => {
+                                                    console.log('Login Failed');
+                                                  }}
+                                                />} />
                 <Route path="/user-table" element={<UserTable />} />
                 <Route path="/election-info" element={<ElectionInfo />} />
                 <Route exact path="/polling-booths" element={<PollingBooths />} />
