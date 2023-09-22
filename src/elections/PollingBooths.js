@@ -86,9 +86,7 @@ const PollingBooths = () => {
 
   return (
 
-    <div style={{  height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'}>
+    <>
       <Form  onFinish={handleSubmit}>
         <div style={{ display: "flex" }}>
                 <span style={{ flex: 1 }}>Please Enter Address: </span>
@@ -98,6 +96,7 @@ const PollingBooths = () => {
         </div>  
        </Form>
       <h2>Polling Locations</h2>
+   
       { pollingLocations.map((location) => (
         <>
            <Card
@@ -115,9 +114,10 @@ const PollingBooths = () => {
             <br/>
           </>
       ) )}
+</>
+  )
 
-    </div>
-  );
+
 };
 
 export default PollingBooths;
