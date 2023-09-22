@@ -24,6 +24,7 @@ class Navbar extends Component {
                         {/* <li><Link to={() => {this.handleClick(); return "/election-info"}}>Election2</Link></li> */}
                         <li><Link to="/polling-booths">Polling Locations</Link></li>
                         <li><Link to="/voter-information">VoterInfo</Link></li>
+                        <li><Link to="/candidate-information">Representatives Info</Link></li>  
                     </ul>
 
 
