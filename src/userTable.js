@@ -40,13 +40,15 @@ const UserTable = () => {
 
     setUserData(sortedData);
   }, []);
-  return (<div style={{ textAlign:"center",fontSize:"16px",marginTop:isSmallScreen?"150px":"20px", fontFamily: 'Raleway, sans-serif'}}><span className="blinking-text" style={{flex:18}}>Total Points : {points} &nbsp;&nbsp;&nbsp;&nbsp; Rank is 230</span>
+  return (<div style={{ textAlign:"center",fontSize:"16px",height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat', fontFamily: 'Raleway, sans-serif'}}><div style={{marginTop:"50px"}}><span className="blinking-text" style={{flex:18}}>Total Points : {points} &nbsp;&nbsp;&nbsp;&nbsp; Rank is 230</span>
   <Table columns={columns} dataSource={userData} style={{marginTop:"20px"}}
   pagination={{
     pageSize: isSmallScreen?3:5, // Increase the number of rows per page
   }}
   scroll={{ x: true }}
-  /></div>);
+  /></div></div>);
 };
 
 export default UserTable;

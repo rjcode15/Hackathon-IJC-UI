@@ -61,10 +61,13 @@ const ElectionInfo = () => {
   console.log("electionData", electionData)
   // Render election information
   return (
-    <div style={{ marginLeft: "10px", marginRight: "20px", height:"50vh" ,marginTop:isSmallScreen?"10px":""}}>
+    <div style={{ height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',}}>
+
       <div style={{ width:isSmallScreen?"100%": "40%" }}>
         <Form form={form} onFinish={handleSubmit}>         
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", marginTop:"50px"   }}>
               <span style={{ flex: 1 }}>Please Enter a Zip Code: </span>
               
               <span style={{ flex: 1 }}><Input name="zipCode" value={zipCode}  onChange={handleInputChange} placeholder="Enter Zip Code" /> </span>
