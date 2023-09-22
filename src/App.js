@@ -16,6 +16,7 @@ import ContactInfo from './contact/ContactInfo';
 import PollingBooths from './elections/PollingBooths';
 import Vote from './elections/Vote';
 import Candidate from './elections/Candidate';
+import Home from './elections/home';
 import { useMediaQuery } from 'react-responsive';
 import {GoogleLogin} from '@react-oauth/google';
 import Registration from './registration/Registration';
@@ -51,7 +52,8 @@ const App = () => {
   }
   return (
    <>
-    {!loggedIn ?<div><b>Hackathon Tech Fest  --  Welcome to PA Youth Vote</b>
+    {
+    !loggedIn ?<div><b>Hackathon Tech Fest  --  Welcome to PA Youth Vote</b>
           <Login loginSuccess = {loginSuccess} > </Login>
         </div>:
       <Router>
@@ -73,6 +75,7 @@ const App = () => {
                     <Route exact path="/polling-booths" element={<PollingBooths />} />
                     <Route exact path="/voter-information" element={<Vote />} />
                     <Route exact path="/candidate-information" element={<Candidate />} />
+                    <Route exact path="/home" element={<Home />} />
                     <Route path="/contact-info" element={<ContactInfo />} />
                   </Routes>
             </Layout>
