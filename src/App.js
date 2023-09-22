@@ -53,10 +53,8 @@ const App = () => {
   }
   return (
    <>
-    {!loggedIn ?
-      <div><b>Hackathon Tech Fest  --  Welcome to PA Youth Vote</b>
-        <Login loginSuccess = {loginSuccess} > </Login>
-      </div>:
+    {
+   
       <Router>
         <div className="App" style={{
           width: isSmallScreen ? "26em" : "96rem",
