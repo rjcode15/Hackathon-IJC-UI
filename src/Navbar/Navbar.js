@@ -18,14 +18,14 @@ class Navbar extends Component {
                     </div>
 
                     <ul id="navbar" className={this.state.clicked ? "#navbar active" : "#navbar"}>
-                        <li><a className="active" href="index.html">Home</a></li>
+                        <li><Link to="/home">Home</Link></li>
 
-                        <li className="nav-item"><Link to="/election-info" data-toggle="collapse" data-target="#navbarCollapse">Election</Link></li>
+                        <li className="nav-item"><Link to="/election-info" data-toggle="collapse" data-target="#navbarCollapse">Elections</Link></li>
                         {/* <li><Link to={() => {this.handleClick(); return "/election-info"}}>Election2</Link></li> */}
                         <li><Link to="/polling-booths">Polling Locations</Link></li>
                         <li><Link to="/registration">Registration</Link></li>
-                        <li><Link to="/polling-booths">Polling</Link></li>
-                        <li><Link to="/voter-information">VoterInfo</Link></li>
+                        {/* <li><Link to="/polling-booths">Polling</Link></li> */}
+                        {/* <li><Link to="/voter-information">VoterInfo</Link></li> */}
                         <li><Link to="/candidate-information">Representatives Info</Link></li>  
                     </ul>
 

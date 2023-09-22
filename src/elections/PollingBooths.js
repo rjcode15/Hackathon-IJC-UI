@@ -11,26 +11,26 @@ const PollingBooths = () => {
   const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isLargeScreen = useMediaQuery({ minWidth: 1024 });
   const [address, setAddress] = useState('');
-
+  const [showLoc, setShowLoc] = useState(false);
   const handleInputChange = (event) => {
     setAddress(event.target.value)
   };
 
   const pollingLocations= [
       {
-        locationName: "Anytown Community Center",
-        line1: "456 Elm St",
+        locationName: "Markward Recreation Center",
+        line1: "400 S. Taney St.",
         city: "Anytown",
-        state: "CA",
-        zip: "12345",
+        state: "Philadelphia",
+        zip: "19146",
         pollingHours: "7:00 AM to 8:00 PM"
       },
       {
-        locationName: "Downtown Library",
-        line1: "789 Oak St",
+        locationName: "Philadelphia City Hall",
+        line1: "1400 John F Kennedy Blvd",
         city: "Anytown",
-        state: "CA",
-        zip: "12345",
+        state: "Philadelphia",
+        zip: "19107",
         pollingHours: "6:30 AM to 7:30 PM"
       }
       // ... other polling locations
@@ -62,12 +62,12 @@ const PollingBooths = () => {
 
   const handleSubmit = () => {
     console.log();
-    
-    fetch('http://localhost:8080/v1/elections/polling-location-info?electionId=8077&address='+address)
-      .then((response) => response.json())
-      .then((data) => {
-            console.log(data);
-      })
+    setShowLoc(true);
+    // fetch('http://localhost:8080/v1/elections/polling-location-info?electionId=8077&address='+address)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //         console.log(data);
+    //   })
   };
   
   // Format the data into an array of objects for the table
@@ -86,23 +86,28 @@ const PollingBooths = () => {
 
   return (
 
-    <>
-      <Form  onFinish={handleSubmit}>
-        <div style={{ display: "flex" }}>
-                <span style={{ flex: 1 }}>Please Enter Address: </span>
+    <div style={{ height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',}}>
+      <Form  onFinish={handleSubmit}  style={{ width:isSmallScreen?"100%": "40%" }}>
+        <div style={{ display: "flex", marginTop:"50px" }}>
+                <span style={{ flex: 1, color:"#33333" }}><b>Please Enter Address: </b></span>
                 <span style={{ flex: 1 }}><Input name="address" value={address}  onChange={handleInputChange} placeholder="Enter Address" /> </span>
                 <span style={{ flex: 1 }}><Button type="primary" htmlType="submit">
                   Submit</Button></span>
         </div>  
        </Form>
-      <h2>Polling Locations</h2>
-   
+     {showLoc && <> <h2 style={{marginTop:"50px"}}>Polling Locations</h2>
+   <div style={{display:"flex", columnGap:"20px",  justifyContent:"center",}}>
       { pollingLocations.map((location) => (
         <>
            <Card
               bordered={false}
-              style={{
-                width: 300,
+              style={{             
+                width:250,      
+                height:300, 
+                fontSize:"16px",
+                
               }}
             >
               <p>Location Name: {location.locationName}</p>
@@ -114,7 +119,9 @@ const PollingBooths = () => {
             <br/>
           </>
       ) )}
-</>
+      </div>
+      </>}
+</div>
   )
 
 

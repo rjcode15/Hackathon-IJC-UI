@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 const ElectionInfo = () => {
 
   const [electionData, setElectionData] = useState([]);
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState(false);
   const [form] = Form.useForm();
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
   const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
@@ -23,7 +23,7 @@ const ElectionInfo = () => {
 
   const handleInputChange = (event) => {
     console.log(event);
-    setZipCode(event.target.value)
+    // setZipCode(event.target.value)
   };
 
   const columns = [
@@ -37,25 +37,26 @@ const ElectionInfo = () => {
       dataIndex: 'name',
       key: 'name',
     },
-    {
-      title: 'Election Day',
-      dataIndex: 'electionDay',
-      key: 'electionDay',
-    },
-    {
-      title: 'Division Id',
-      dataIndex: 'ocdDivisionId',
-      key: 'ocdDivisionId',
-
-    },
+   
   ];
+  const elections =[
+    {
+      id:"001",
+      name:"MUNICIPAL PRIMARY"
+    },
+    {
+      id:"002",
+      name:"MUNICIPAL Election"
+    },
+  ]
 
   const handleSubmit = async () => {
-    fetch('http://localhost:8080/v1/elections/upcoming')
-    .then((response) => response.json())
-    .then((data) => {
-      setElectionData(data.elections);
-    });
+    setZipCode(true);
+    // fetch('http://localhost:8080/v1/elections/upcoming')
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   setElectionData(data.elections);
+    // });
   };
 
   console.log("electionData", electionData)
@@ -67,19 +68,17 @@ const ElectionInfo = () => {
 
       <div style={{ width:isSmallScreen?"100%": "40%" }}>
         <Form form={form} onFinish={handleSubmit}>         
-            <div style={{ display: "flex", marginTop:"50px"   }}>
-              <span style={{ flex: 1 }}>Please Enter a Zip Code: </span>
-              
-              <span style={{ flex: 1 }}><Input name="zipCode" value={zipCode}  onChange={handleInputChange} placeholder="Enter Zip Code" /> </span>
-
+        <div style={{ display: "flex",marginTop:"50px"  }}>
+              <span style={{ flex: 1, color:"#33333"}}><b>Please Enter a Zip Code:</b> </span>
+              <span style={{ flex: 1 }}><Input placeholder="Enter Zip Code" /> </span>
               <span style={{ flex: 1 }}><Button type="primary" htmlType="submit">
                 Submit</Button></span>
-            </div>         
+            </div>            
 
         </Form>
       </div>
-      {electionData && <><h2>Election Data</h2>
-        <Table columns={columns} dataSource={electionData} 
+      {zipCode && elections && <><h2 style={{marginTop:"50px"}}>Election Data</h2>
+        <Table columns={columns} dataSource={elections} 
         pagination={{
           pageSize: 4, 
         }}
