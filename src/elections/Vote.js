@@ -167,10 +167,12 @@ const data = electionData.map((contest, index) => ({
   };
   
   return (
-    <div className="App" style={{ marginLeft: "10px", marginRight: "20px", height:"50vh",marginTop:isSmallScreen?"150px":""}}>
+    <div className="App" style={{ height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'}}>
       <div style={{ width: isSmallScreen?"100%":"40%" }}>
         <Form form={form} onFinish={handleSubmit}>         
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", marginTop:"50px" }}>
               Please Select Election:&nbsp;&nbsp;&nbsp;
             <Select
       defaultValue="MLA Test Election"
