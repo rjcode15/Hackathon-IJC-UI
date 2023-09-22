@@ -20,8 +20,9 @@ import Home from './elections/home';
 import { useMediaQuery } from 'react-responsive';
 import {GoogleLogin} from '@react-oauth/google';
 import Registration from './registration/Registration';
+import Bottom from './Bottom';
 import './App.css';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 const headerStyle = {
   textAlign: 'center',
@@ -46,23 +47,22 @@ const App = () => {
   const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isLargeScreen = useMediaQuery({ minWidth: 1024 });
 
-  console.log("logedIn", loggedIn);
+  console.log("loggedIn", loggedIn);
   const loginSuccess = (loggedIn) => {
     setLoggedIn(true);
   }
   return (
    <>
-    {
-    !loggedIn ?<div><b>Hackathon Tech Fest  --  Welcome to PA Youth Vote</b>
-          <Login loginSuccess = {loginSuccess} > </Login>
-        </div>:
+    {!loggedIn ?
+      <div><b>Hackathon Tech Fest  --  Welcome to PA Youth Vote</b>
+        <Login loginSuccess = {loginSuccess} > </Login>
+      </div>:
       <Router>
         <div className="App" style={{
           width: isSmallScreen ? "26em" : "96rem",
           display: isSmallScreen ? "block" : "flex"
         }}>
           
-
             <Layout>
               <Header style={{backgroundColor: '#ffffff'}} >
                 <Navbar/>
@@ -79,9 +79,9 @@ const App = () => {
                     <Route path="/contact-info" element={<ContactInfo />} />
                   </Routes>
             </Layout>
-        
         </div>
-      </Router> 
+        <Bottom/>
+      </Router>
     }
     </>
   );

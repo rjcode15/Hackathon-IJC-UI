@@ -1,0 +1,14 @@
+#footer-everywhere {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  position: absolute !important;
+  bottom: 0 !important;
+  width: -webkit-fill-available !important;
+}
+
+#social-media-container {
+  margin-top: auto;
+}
+
