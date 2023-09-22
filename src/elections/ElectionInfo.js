@@ -49,7 +49,7 @@ const ElectionInfo = () => {
 
     },
   ];
-  
+
   const handleSubmit = async () => {
     fetch('http://localhost:8080/v1/elections/upcoming')
     .then((response) => response.json())
@@ -64,6 +64,7 @@ const ElectionInfo = () => {
     <div style={{ height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',}}>
+
       <div style={{ width:isSmallScreen?"100%": "40%" }}>
         <Form form={form} onFinish={handleSubmit}>         
             <div style={{ display: "flex", marginTop:"50px"   }}>

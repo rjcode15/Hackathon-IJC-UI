@@ -1,15 +1,21 @@
 // src/components/PollingBooths.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Table } from 'antd';
-import { useDispatch, useSelector } from 'react-redux'; // Import useDispatch and useSelector
-import { incrementPoints, decrementPoints } from '../pointsActions';
+import { Input, Form, Button } from 'antd';
 import { useMediaQuery } from 'react-responsive';
+
+import { Card } from 'antd';
+
 const PollingBooths = () => {
-//   const [pollingLocations, setPollingLocations] = useState([]);
-const isSmallScreen = useMediaQuery({ maxWidth: 767 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 767 });
   const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isLargeScreen = useMediaQuery({ minWidth: 1024 });
+  const [address, setAddress] = useState('');
+
+  const handleInputChange = (event) => {
+    setAddress(event.target.value)
+  };
+
   const pollingLocations= [
       {
         locationName: "Anytown Community Center",
@@ -54,6 +60,16 @@ const isSmallScreen = useMediaQuery({ maxWidth: 767 });
     },
   ];
 
+  const handleSubmit = () => {
+    console.log();
+    
+    fetch('http://localhost:8080/v1/elections/polling-location-info?electionId=8077&address='+address)
+      .then((response) => response.json())
+      .then((data) => {
+            console.log(data);
+      })
+  };
+  
   // Format the data into an array of objects for the table
   const data = pollingLocations.map((location, index) => ({
     key: index,
@@ -66,44 +82,40 @@ const isSmallScreen = useMediaQuery({ maxWidth: 767 });
     },
     pollingHours: location.pollingHours,
   }));
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           `https://www.googleapis.com/civicinfo/v2/voterinfo?address=${zipCode}&fields=pollingLocations`
-//         );
 
-//         // Process the response data and set polling locations in the state
-//         setPollingLocations(mockResponse);
-//       } catch (error) {
-//         console.error('Error fetching polling locations:', error);
-//         setPollingLocations(mockResponse);
-//       }
-//     };
 
-//     if (zipCode) {
-//       fetchData();
-//     }
-//   }, [zipCode]);
-
-//   if (!zipCode) {
-//     return <div>Enter a zip code to find polling locations</div>;
-//   }
-
-//   if (pollingLocations.length === 0) {
-//     return <div>No polling locations found for this zip code</div>;
-//   }
-
-  // Render polling locations
   return (
+
     <div style={{  height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'}}>
+    backgroundRepeat: 'no-repeat'}>
+      <Form  onFinish={handleSubmit}>
+        <div style={{ display: "flex" }}>
+                <span style={{ flex: 1 }}>Please Enter Address: </span>
+                <span style={{ flex: 1 }}><Input name="address" value={address}  onChange={handleInputChange} placeholder="Enter Address" /> </span>
+                <span style={{ flex: 1 }}><Button type="primary" htmlType="submit">
+                  Submit</Button></span>
+        </div>  
+       </Form>
       <h2>Polling Locations</h2>
-      <Table columns={columns} dataSource={data}  pagination={{
-          pageSize: isSmallScreen?3:5, // Increase the number of rows per page
-        }}
-        scroll={{ x: true }} />
+      { pollingLocations.map((location) => (
+        <>
+           <Card
+              bordered={false}
+              style={{
+                width: 300,
+              }}
+            >
+              <p>Location Name: {location.locationName}</p>
+              <p>{location.line1}</p>
+              <p>{location.city}</p>
+              <p>{location.state}</p>
+              <p>{location.zip}</p>
+            </Card>
+            <br/>
+          </>
+      ) )}
+
     </div>
   );
 };
