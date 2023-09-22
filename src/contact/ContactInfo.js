@@ -21,7 +21,9 @@ const ContactInfo = () => {
   };
 
   return (
-    <div style={{marginTop:isSmallScreen?"150px":""}}>
+    <div style={{ height:isSmallScreen?"100vh":"200vh", backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',}}>
       <h4><b>Address:</b>  Mississauga, ON, Canada</h4>
       <h4><b>Phone Number:</b> (519) 888-1111 </h4>
       <h4><b>Hours:</b> 9AM - 5PM Monday - Friday </h4>
@@ -41,7 +43,7 @@ const ContactInfo = () => {
           <br/>
           <div>  <Input id="subject" placeholder="Enter the subject" required /></div>
           <br/>
-          <div><Input.TextArea id="message" placeholder="Enter your message" rows={30} cols={60}/></div>
+          <div><Input.TextArea id="message" placeholder="Enter your message" rows={isSmallScreen?10:30} cols={60}/></div>
           <br/>
           <div><Button type="primary">Send Message
       </Button></div>

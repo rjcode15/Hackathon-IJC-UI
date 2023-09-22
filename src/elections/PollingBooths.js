@@ -96,10 +96,12 @@ const isSmallScreen = useMediaQuery({ maxWidth: 767 });
 
   // Render polling locations
   return (
-    <div style={{ marginLeft: "10px", marginRight: "20px", height:"50vh" ,marginTop:isSmallScreen?"150px":""}}>
+    <div style={{  height:isSmallScreen?"150vh":"200vh" , backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'}}>
       <h2>Polling Locations</h2>
       <Table columns={columns} dataSource={data}  pagination={{
-          pageSize: isSmallScreen?1:5, // Increase the number of rows per page
+          pageSize: isSmallScreen?3:5, // Increase the number of rows per page
         }}
         scroll={{ x: true }} />
     </div>

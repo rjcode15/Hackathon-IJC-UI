@@ -14,7 +14,7 @@ class Navbar extends Component {
             <>
                 <nav>
                     <div style={{ display: "flex" }} >
-                        <span style={{ fontSize: "18px", color: "#333333", flex: 2, marginTop: "5px" }}>Welcome  {loggedInUser}!</span>
+                        <span style={{ fontSize: "18px", color: "#333333", flex: 2, marginTop: "5px",marginLeft:"20px" }}>Welcome  {loggedInUser}!</span>
                     </div>
 
                     <ul id="navbar" className={this.state.clicked ? "#navbar active" : "#navbar"}>
@@ -25,8 +25,8 @@ class Navbar extends Component {
                         <li><Link to="/polling-booths">Polling</Link></li>
                         <li><Link to="/voter-information">VoterInfo</Link></li>
                         <li><Link to="/candidate-information">CandidateInfo</Link></li>
-                        <li><Link to="/user-table">Ledger Board</Link></li>
-                        <li><Link to="/about-info">About</Link></li>
+                        <li><Link to="/user-table">Points and Leader Board</Link></li>
+                        {/* <li><Link to="/about-info">About</Link></li> */}
                         <li><Link to="/contact-info">Contact</Link></li>
                         <li><a href="index.html">Logout</a></li>
                     </ul>

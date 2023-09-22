@@ -79,7 +79,7 @@ const App = () => {
           <Header style={{backgroundColor: '#ffffff'}} >
             <Navbar/>
           </Header>
-          <div  style ={{padding: "20px"}}></div>
+          <div  style ={{marginTop:"10px"}}></div>
               <Routes>
               <Route path="/" element={<GoogleLogin 
                                                   onSuccess={ tokenResponse => {

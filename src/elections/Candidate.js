@@ -1186,11 +1186,14 @@ const columnsCand = [
 
 
   return (
-    <div style={{ marginLeft: "10px", marginRight: "20px", height:isSmallScreen?"150vh":"200vh",marginTop:isSmallScreen?"150px":"" }}>
+    <div style={{  height:isSmallScreen?"150vh":"200vh", backgroundImage:`url('/image7.webp')`, backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    }}>
       <div style={{ width: isSmallScreen?"100%":"40%" }}>
         <Form form={form} onFinish={handleSubmit}>         
-            <div style={{ display: "flex" }}>
-              <span style={{ flex: 1 }}>Please Enter a Zip Code: </span>
+            <div style={{ display: "flex",marginTop:"50px"  }}>
+              <span style={{ flex: 1, color:"#33333"}}><b>Please Enter a Zip Code:</b> </span>
               <span style={{ flex: 1 }}><Input placeholder="Enter Zip Code" /> </span>
               <span style={{ flex: 1 }}><Button type="primary" htmlType="submit">
                 Submit</Button></span>
