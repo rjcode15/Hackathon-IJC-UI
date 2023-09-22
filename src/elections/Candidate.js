@@ -103,7 +103,7 @@ const handleSubmit = () => {
 
 console.log(candInfo);
   return (
-    <div style={{ marginLeft: "10px", marginRight: "20px", height:isSmallScreen?"150vh":"200vh",marginTop:isSmallScreen?"150px":"" }}>
+    <div style={{ marginLeft: "10px", marginRight: "20px", height:isSmallScreen?"150vh":"200vh",marginTop:isSmallScreen?"10px":"" }}>
       <div style={{ width: isSmallScreen?"100%":"60%" }}>
         <Form form={form} onFinish={handleSubmit}>         
             <div style={{ display: "flex" }}>

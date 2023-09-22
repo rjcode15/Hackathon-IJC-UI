@@ -49,7 +49,7 @@ const ElectionInfo = () => {
 
     },
   ];
-  
+
   const handleSubmit = async () => {
     fetch('http://localhost:8080/v1/elections/upcoming')
     .then((response) => response.json())
@@ -61,7 +61,7 @@ const ElectionInfo = () => {
   console.log("electionData", electionData)
   // Render election information
   return (
-    <div style={{ marginLeft: "10px", marginRight: "20px", height:"50vh" ,marginTop:isSmallScreen?"150px":""}}>
+    <div style={{ marginLeft: "10px", marginRight: "20px", height:"50vh" ,marginTop:isSmallScreen?"10px":""}}>
       <div style={{ width:isSmallScreen?"100%": "40%" }}>
         <Form form={form} onFinish={handleSubmit}>         
             <div style={{ display: "flex" }}>
