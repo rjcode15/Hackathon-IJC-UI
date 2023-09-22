@@ -17,7 +17,8 @@ import PollingBooths from './elections/PollingBooths';
 import Vote from './elections/Vote';
 import Candidate from './elections/Candidate';
 import { useMediaQuery } from 'react-responsive';
-
+import {GoogleLogin} from '@react-oauth/google';
+import Registration from './registration/Registration';
 import './App.css';
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -66,6 +67,7 @@ const App = () => {
               </Header>
               <div  style ={{marginTop:"10px"}}></div>
                   <Routes>
+                    <Route path="/registration" element={<Registration />} />
                     <Route path="/user-table" element={<UserTable />} />
                     <Route path="/election-info" element={<ElectionInfo />} />
                     <Route exact path="/polling-booths" element={<PollingBooths />} />
