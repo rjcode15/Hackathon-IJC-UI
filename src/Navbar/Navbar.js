@@ -22,10 +22,9 @@ class Navbar extends Component {
 
                         <li className="nav-item"><Link to="/election-info" data-toggle="collapse" data-target="#navbarCollapse">Election</Link></li>
                         {/* <li><Link to={() => {this.handleClick(); return "/election-info"}}>Election2</Link></li> */}
-                        <li><Link to="/polling-booths">Polling</Link></li>
+                        <li><Link to="/polling-booths">Polling Locations</Link></li>
                         <li><Link to="/voter-information">VoterInfo</Link></li>
-                        <li><Link to="/candidate-information">CandidateInfo</Link></li>
-                        <li><Link to="/user-table">Ledger Board</Link></li>
+                        <li><Link to="/candidate-information">Representatives Info</Link></li>                       
                         <li><Link to="/about-info">About</Link></li>
                         <li><Link to="/contact-info">Contact</Link></li>
                         <li><a href="index.html">Logout</a></li>
